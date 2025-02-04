@@ -1,0 +1,11 @@
+{
+    // Prettier를 기본 포맷터로 설정
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  
+    // 저장 시 자동 포맷팅 활성화
+    "editor.formatOnSave": true,
+  
+    // Prettier의 경로를 명시
+    "prettier.prettierPath": "./node_modules/prettier"
+  }
+  
