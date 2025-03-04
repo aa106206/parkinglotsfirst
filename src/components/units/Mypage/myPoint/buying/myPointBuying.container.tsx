@@ -1,8 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
-import MyPointPresenter from "./myPointBuying.presenter";
 import { IQuery } from "../../../../../commons/types/generated/types";
 import { useRouter } from "next/router";
-import MyPointTotalPresenter from "./myPointBuying.presenter";
 import { MouseEvent } from "react";
 import MyPointBuyingPresenter from "./myPointBuying.presenter";
 
@@ -29,10 +27,13 @@ const FETCH_POINT_TRANSACTIONS_OF_BUYING = gql`
 
 export default function MyPointBuyingContainer() {
   const router = useRouter();
-
+  alert("??");
+  console.log("#####");
   const { data } = useQuery<Pick<IQuery, "fetchPointTransactionsOfBuying">>(
     FETCH_POINT_TRANSACTIONS_OF_BUYING,
   );
+  console.log("#####");
+  console.log(data);
 
   const onClickMoveToPage = (event: MouseEvent<HTMLDivElement>) => {
     router.push(`/mypage/mypoint/${event.currentTarget.id}`);

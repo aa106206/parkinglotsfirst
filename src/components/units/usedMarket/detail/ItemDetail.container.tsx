@@ -1,60 +1,30 @@
 import { gql, useMutation, useQuery } from "@apollo/client";
 import ItemDetailPresenter from "./ItemDetail.presenter";
 import {
+  IMutation,
+  IMutationCreatePointTransactionOfBuyingAndSellingArgs,
   IQuery,
   IQueryFetchUseditemArgs,
 } from "../../../../commons/types/generated/types";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { MouseEvent, useEffect } from "react";
+import {
+  CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING,
+  FETCH_USED_ITEM,
+  TOGGLE_USED_ITEM_PICK,
+} from "./ItemDetail.queries";
 
 declare const window: typeof globalThis & { kakao: any };
 
-const FETCH_USED_ITEM = gql`
-  query fetchUseditem($useditemId: ID!) {
-    fetchUseditem(useditemId: $useditemId) {
-      _id
-      name
-      remarks
-      contents
-      price
-      tags
-      images
-      pickedCount
-      useditemAddress {
-        _id
-        zipcode
-        address
-        addressDetail
-        lat
-        lng
-        createdAt
-        updatedAt
-        deletedAt
-      }
-      buyer {
-        _id
-        name
-      }
-      seller {
-        _id
-        name
-      }
-      soldAt
-      createdAt
-      updatedAt
-      deletedAt
-    }
-  }
-`;
-
-const TOGGLE_USED_ITEM_PICK = gql`
-  mutation toggleUseditemPick($useditemId: ID!) {
-    toggleUseditemPick(useditemId: $useditemId)
-  }
-`;
-
 export default function ItemDetailContainer() {
   const router = useRouter();
+
+  const [usedItemPick] = useMutation(TOGGLE_USED_ITEM_PICK);
+
+  const [buyData] = useMutation<
+    Pick<IMutation, "createPointTransactionOfBuyingAndSelling">,
+    IMutationCreatePointTransactionOfBuyingAndSellingArgs
+  >(CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING);
 
   const { data } = useQuery<
     Pick<IQuery, "fetchUseditem">,
@@ -64,8 +34,6 @@ export default function ItemDetailContainer() {
       useditemId: typeof router.query.id === "string" ? router.query.id : "",
     },
   });
-
-  const [usedItemPick] = useMutation(TOGGLE_USED_ITEM_PICK);
 
   useEffect(() => {
     const script = document.createElement("script"); //<script>
@@ -112,19 +80,25 @@ export default function ItemDetailContainer() {
     });
   };
 
-  const onClickMoveToList = () => {
+  const onClickMoveToList = (event: MouseEvent<HTMLButtonElement>) => {
     router.push("/market");
   };
 
-  console.log("여기에요 여기");
-  console.log(data?.fetchUseditem.images);
-  console.log(data?.fetchUseditem.images?.[1]);
+  const onClickBuy = async (event: MouseEvent<HTMLButtonElement>) => {
+    const result = await buyData({
+      variables: {
+        useritemId: typeof router.query.id === "string" ? router.query.id : "",
+      },
+    });
+    router.push("/market");
+  };
 
   return (
     <ItemDetailPresenter
       data={data}
       onClickHeartCount={onClickHeartCount}
       onClickMoveToList={onClickMoveToList}
+      onClickBuy={onClickBuy}
     />
   );
 }

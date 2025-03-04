@@ -1,26 +1,7 @@
-import {
-  FieldValues,
-  FormState,
-  UseFormHandleSubmit,
-  UseFormRegister,
-} from "react-hook-form";
 import Upload2Container from "../../../commons/uploads/upload2/upload2.container";
 import * as S from "./ItemWrite.styles";
 import { v4 as uuidv4 } from "uuid";
-import { IFormData } from "./ItemWrite.container";
-
-interface IItemWritePresenter {
-  onChangeImageUrls: (imageUrl: string, index: number) => void;
-  itemImageUrls: string[];
-  onClickSubmit: (data: any) => void;
-  lat: number;
-  lng: number;
-  address: string;
-  register: UseFormRegister<IFormData>;
-  handleSubmit: UseFormHandleSubmit<FieldValues, undefined>;
-  onChangeContents: (value: string) => void;
-  formState: FormState<IFormData>;
-}
+import { IItemWritePresenter } from "./ItemWrite.types";
 
 export default function ItemWritePresenter(props: IItemWritePresenter) {
   return (
@@ -53,15 +34,25 @@ export default function ItemWritePresenter(props: IItemWritePresenter) {
             placeholder="상품을 설명해주세요"
             onChange={props.onChangeContents}
           />
-          <div style={{ color: "red" }}>
+          <div
+            style={{
+              color: "red",
+            }}
+          >
             {props.formState.errors.contents?.message}
           </div>
         </S.Wrap2WebEditor>
         <S.Wrap2Input>
           <S.Wrap2Input1>판매가격</S.Wrap2Input1>
           <S.Wrap2Input2
+            type="text"
             placeholder="판매가격을 입력해주세요"
-            {...props.register("price")}
+            {...props.register("price", {
+              onChange: (e) => {
+                const onlyNumbers = e.target.value.replace(/[^0-9]/g, ""); // 숫자만 남기기
+                props.setValue("price", onlyNumbers); // 값 업데이트
+              },
+            })}
           />
           <div style={{ color: "red" }}>
             {props.formState.errors.price?.message}
@@ -102,15 +93,10 @@ export default function ItemWritePresenter(props: IItemWritePresenter) {
               </S.Wrap2LocationRightGPS2>
             </S.Wrap2LocationRightGPS>
             <S.Wrap2LocationRightAddress>
-              <S.Wrap2LocationRightAddress1>주소</S.Wrap2LocationRightAddress1>
-              <S.Wrap2LocationRightAddress2
-                readOnly
-                value={props.address}
-                {...props.register("address")}
-              />
-              <div style={{ color: "red" }}>
-                {props.formState.errors.address?.message}
-              </div>
+              <S.Wrap2LocationRightAddress1>
+                주소 (지도의 마커를 이동시켜 위치를 입력해주세요)
+              </S.Wrap2LocationRightAddress1>
+              <S.Wrap2LocationRightAddress2 readOnly value={props.address} />
               <S.Wrap2LocationRightAddress2
                 placeholder="상세주소를 작성해주세요"
                 {...props.register("addressDetail")}

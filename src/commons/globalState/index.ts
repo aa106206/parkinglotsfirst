@@ -1,5 +1,4 @@
 import { atom } from "recoil";
-import { IQuery } from "../types/generated/types";
 
 export const accessTokenState = atom({
   key: "accessTokenState",
@@ -11,9 +10,7 @@ export const IsLogInState = atom({
   default: false,
 });
 
-// // const [recentlyViewed, setRecentlyViewed] = useState([]);
-
-// export const recentlyViewedState = atom<string[]>({
-//   key: "recentlyViewed",
-//   default: [],
-// });
+export const loadPage = atom({
+  key: "loadPage",
+  default: false,
+});

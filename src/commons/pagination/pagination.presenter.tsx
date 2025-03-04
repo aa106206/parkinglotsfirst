@@ -11,7 +11,7 @@ export default function PaginationPresenter(props: IPaginationPresenter) {
               key={index}
               id={String(props.startPage + index)}
               onClick={props.onClickPage}
-              style={{ margin: "0px 10px" }}
+              style={{ cursor: "pointer", margin: "0px 10px" }}
             >
               {props.startPage + index}
             </span>

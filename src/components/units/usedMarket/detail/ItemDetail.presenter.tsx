@@ -3,12 +3,7 @@ import { getDate } from "../../../../commons/libraries/date";
 import * as S from "./ItemDetail.styles";
 import { IQuery } from "../../../../commons/types/generated/types";
 import { formatPrice } from "../../../../commons/price/price";
-
-interface IItemDetailPresenter {
-  data: Pick<IQuery, "fetchUseditem"> | undefined;
-  onClickHeartCount: () => void;
-  onClickMoveToList: () => void;
-}
+import { IItemDetailPresenter } from "./ItemDetail.types";
 
 export default function ItemDetailPresenter(props: IItemDetailPresenter) {
   return (
@@ -78,7 +73,11 @@ export default function ItemDetailPresenter(props: IItemDetailPresenter) {
       </S.MainMap>
       <S.BtnLine>
         <S.Btn onClick={props.onClickMoveToList}>목록으로</S.Btn>
-        <S.Btn>수정하기</S.Btn>
+        {props.data?.fetchUseditem.soldAt ? (
+          <></>
+        ) : (
+          <S.Btn onClick={props.onClickBuy}>구매하기</S.Btn>
+        )}
       </S.BtnLine>
     </S.Wrapper>
   );

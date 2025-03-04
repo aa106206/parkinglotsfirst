@@ -59,7 +59,7 @@ export default function BoardCommentListContainer() {
   };
 
   const onLoadMore = () => {
-    // if (data === undefined) return;
+    if (data === undefined) return;
     console.log(data);
 
     fetchMore({

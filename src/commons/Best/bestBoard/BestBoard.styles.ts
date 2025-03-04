@@ -1,33 +1,32 @@
 import styled from "@emotion/styled";
 
 export const BestBoard = styled.div`
+  box-sizing: border-box;
   width: 280px;
   height: 250px;
   display: flex;
   flex-direction: column;
   border-radius: 20px;
-  border: 1px solid black;
+  box-shadow: 5px 5px 10px 0px #0000001a;
   overflow: hidden;
   cursor: pointer;
+  :hover {
+    border: 1px solid #ff9797;
+  }
 `;
 
 export const ImageBlock = styled.img`
   width: 100%;
   height: 115px;
-  border-bottom: 1px solid black;
 `;
 
 export const TextBlock = styled.div`
-  /* width: 100%; */
   height: 135px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  :hover {
-    background-color: #ff9797;
-  }
 `;
 
 export const BestBoardTitle = styled.div`
@@ -48,7 +47,6 @@ export const BestBoardInfoLeft = styled.div`
   display: flex;
   height: 100%;
   flex-direction: column;
-  /* align-items: center; */
   justify-content: space-between;
 `;
 

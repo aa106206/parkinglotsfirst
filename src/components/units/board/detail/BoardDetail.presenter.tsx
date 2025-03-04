@@ -35,7 +35,10 @@ export default function BoardDetailPresenter(
           )}
 
           <S.Contents>{props.data?.fetchBoard?.contents}</S.Contents>
-          <S.Youtube url={`${props.data?.fetchBoard?.youtubeUrl}`} />
+          {props.data?.fetchBoard?.youtubeUrl && (
+            <S.Youtube url={`${props.data?.fetchBoard?.youtubeUrl}`} />
+          )}
+
           <S.LikeOrDislike>
             <S.LikeBlock
               id={props.data?.fetchBoard._id}

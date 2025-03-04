@@ -60,6 +60,7 @@ export const BodyBlockBlankContent = styled.textarea`
   height: 480px;
   padding: 10px;
   border: 1px solid #bdbdbd;
+  resize: none;
 `;
 
 export const BodyBlockAddress = styled.div`
@@ -71,6 +72,7 @@ export const BodyBlockAddress = styled.div`
 `;
 
 export const BodyBlockAddressFirst = styled.div`
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -78,6 +80,7 @@ export const BodyBlockAddressFirst = styled.div`
 `;
 
 export const BodyBlockBlankAddress = styled.input`
+  box-sizing: border-box;
   width: 77px;
   height: 52px;
   padding-left: 20px;
@@ -85,6 +88,7 @@ export const BodyBlockBlankAddress = styled.input`
 `;
 
 export const BodyBlockBlankAddressBtn = styled.button`
+  box-sizing: border-box;
   width: 124px;
   height: 52px;
   background-color: black;
@@ -99,16 +103,6 @@ export const BodyBlockUploadLine = styled.div`
   justify-content: space-between;
   width: 282px;
 `;
-
-// export const BodyBlockUpload = styled.button`
-//   width: 78px;
-//   height: 78px;
-//   border: none;
-//   background-color: #bdbdbd;
-//   font-size: 16px;
-//   cursor: pointer;
-//   padding: 0px;
-// `;
 
 export const RadioBtnLine = styled.div`
   display: flex;
@@ -142,10 +136,3 @@ export const RegisterBtn = styled.button`
   background-color: ${(props: ISubmitButtonProps) =>
     props.isActive ? "#FFD600" : ""};
 `;
-
-// export const Image = styled.img`
-//   width: 78px;
-//   height: 78px;
-//   background-color: white;
-//   border:1px solid black;
-// `;

@@ -11,9 +11,19 @@ export default function BoardCommentWritePresenter(
         <S.CommandWrite>
           <S.CommandWriteInfo>
             <S.CommandWriteInfoHeadLine>
-              <S.CommandWriteInfoHeadLineImg src="/images/command.png" />
-              {props.isEdit ? "수정" : " 댓글"}
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <S.CommandWriteInfoHeadLineImg src="/images/command.png" />
+                {props.isEdit ? "수정" : " 댓글"}
+              </div>
+              {props.isEdit && (
+                <img
+                  onClick={props.onClickBack}
+                  style={{ cursor: "pointer" }}
+                  src="/images/delete.png"
+                />
+              )}
             </S.CommandWriteInfoHeadLine>
+
             <S.CommandWriteInfoBodyLine>
               <S.CommandWriteInfoBodyInput
                 placeholder="작성자"

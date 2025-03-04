@@ -60,7 +60,6 @@ export const LogInSuccess = styled.div`
 export const LoginProfile = styled.img`
   width: 48px;
   height: 48px;
-  /* cursor: pointer; */
 `;
 
 export const LoginDetail = styled.img`

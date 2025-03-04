@@ -1,5 +1,19 @@
 import styled from "@emotion/styled";
 
+export const ModalOverlay = styled.div`
+  //Layout 부분에서 사용되고 있음
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* 기존 화면과 인터랙션 방지 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* 최상위로 배치 */
+`;
+
 export const BestUsedItem = styled.div`
   width: 1200px;
   height: 475px;
@@ -21,7 +35,6 @@ export const BestUsedItemTitle = styled.div`
 export const BestUsedItemMain = styled.div`
   width: 100%;
   height: 390px;
-  /* border: 1px solid red; */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -34,19 +47,20 @@ export const TodayWatchListWrapper = styled.div`
   top: 650px;
   left: 1250px;
   width: 200px;
-  height: 500px;
-  border: 1px solid black;
+  border: 1px solid #bdbdbd;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  font-size: 18px;
-  font-weight: 700;
-  padding: 20px;
 `;
 
-export const TodayWatchListItem = styled.div`
-  width: 150px;
-  height: 200px;
+export const TodayWatchListText = styled.div`
+  width: 100%;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 10px 0px;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  text-align: center;
 `;
 
 export const Wrapper = styled.div`
@@ -56,7 +70,6 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* position: relative; */
 `;
 
 export const Option = styled.div`

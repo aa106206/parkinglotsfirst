@@ -1,10 +1,13 @@
+import { MouseEvent } from "react";
 import { IQuery } from "../types/generated/types";
 import * as S from "./popoverContentLogin.styled";
 
 interface IPopoverContentLoginPresenter {
+  isModalOpen: boolean;
   onClickMyPage: () => void;
   data: Pick<IQuery, "fetchUserLoggedIn"> | undefined;
   onClickLogOut: () => void;
+  handleOpenModal: (event: MouseEvent<HTMLDivElement>) => void;
 }
 
 export default function PopoverContentLoginPresenter(
@@ -27,7 +30,7 @@ export default function PopoverContentLoginPresenter(
       </S.MainLine>
       <S.SecondLine>
         <S.LineImg src="/images/popover1.png" />
-        <S.LineWord>충전하기</S.LineWord>
+        <S.LineWord onClick={props.handleOpenModal}>충전하기</S.LineWord>
       </S.SecondLine>
       <S.ThirdLine>
         <S.LineImg src="/images/popover2.png" />

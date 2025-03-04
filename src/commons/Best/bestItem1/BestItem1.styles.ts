@@ -1,16 +1,18 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
+  box-sizing: border-box;
   width: 280px;
   height: 390px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   cursor: pointer;
   :hover {
-    background-color: #ff9797;
+    border: 1px solid #ff9797;
   }
+  box-shadow: 2px 2px 10px 0px #0000001a;
 `;
 
 export const ItemImage = styled.img`

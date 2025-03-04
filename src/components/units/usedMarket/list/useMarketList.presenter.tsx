@@ -1,25 +1,14 @@
 import * as S from "./usedMarketList.styles";
 import InfiniteScroll from "react-infinite-scroller";
-import { IQuery } from "../../../../commons/types/generated/types";
 import { formatPrice } from "../../../../commons/price/price";
-import { ChangeEvent, MouseEvent } from "react";
 import { getDate } from "../../../../commons/libraries/date";
 import BestItem1Container from "../../../../commons/Best/bestItem1/BestItem1.container";
 import SearchBar2 from "../../../../commons/searchbar/searchBar2/searchbar2";
 import { DatePicker, Space } from "antd";
-
-interface IUsedMarketPresenter {
-  data: Pick<IQuery, "fetchUseditems"> | undefined;
-  BestItem: Pick<IQuery, "fetchUseditemsOfTheBest"> | undefined;
-  selected: string;
-  onClickSoldoutFalse: (event: MouseEvent<HTMLDivElement>) => void;
-  onClickSoldoutTrue: (event: MouseEvent<HTMLDivElement>) => void;
-  onLoadMore: () => void;
-  onClickMoveToWritePage: () => void;
-  onClickMoveToDetailPage: (event: MouseEvent<HTMLDivElement>) => void;
-  onChangeInput: (event: ChangeEvent<HTMLInputElement>) => void;
-  handleRangeChange: (dates: any, dateStrings: any) => void;
-}
+import BestItem2Container from "../../../../commons/Best/bestItem2/BestItem2.container";
+import { IUsedMarketPresenter } from "./useMarketList.types";
+import LoadingContainer from "../../../../commons/loading/loading.container";
+import HashtagConverter from "../../../../commons/HashTagConvert/HashtagConverter";
 
 export default function UsedMarketPresenter(props: IUsedMarketPresenter) {
   const { RangePicker } = DatePicker;
@@ -32,9 +21,20 @@ export default function UsedMarketPresenter(props: IUsedMarketPresenter) {
             <BestItem1Container el={el} />
           ))}
         </S.BestUsedItemMain>
-        <S.TodayWatchListWrapper>
-          오늘 본 상품
-          <BestItem1Container />
+        <S.TodayWatchListWrapper style={{ height: "700px", overflow: "auto" }}>
+          <S.TodayWatchListText>오늘 본 상품</S.TodayWatchListText>
+          <div>
+            <InfiniteScroll
+              pageStart={0}
+              loadMore={props.onLoadMore}
+              hasMore={true}
+              useWindow={false}
+            >
+              {props.recentlyViewed?.map((el) => (
+                <BestItem2Container el={el} />
+              ))}
+            </InfiniteScroll>
+          </div>
         </S.TodayWatchListWrapper>
       </S.BestUsedItem>
 
@@ -86,7 +86,9 @@ export default function UsedMarketPresenter(props: IUsedMarketPresenter) {
                 <S.UsedItemPart2>
                   <S.Part2Name>{el.name}</S.Part2Name>
                   <S.Part2Remark>{el.remarks}</S.Part2Remark>
-                  <S.Part2Tags>{el.tags?.[0] ? `#${el.tags}` : ""}</S.Part2Tags>
+                  <S.Part2Tags>
+                    {HashtagConverter(el.tags?.[0] ? `${el.tags}` : "")}
+                  </S.Part2Tags>
                   <S.Part2Footer>
                     <S.Part2ImgAndText>
                       <S.Part2Img src="/images/profile.png" />

@@ -29,7 +29,7 @@ export default function BoardWritePresenter(props: IBoardWritePresenterProps) {
   return (
     <>
       {props.isModalOpen && (
-        <Modal open={props.isModalOpen}>
+        <Modal open={props.isModalOpen} onCancel={props.onToggleModal}>
           <DaumPostcodeEmbed onComplete={props.onCompleteAddressSearch} />
         </Modal>
       )}
@@ -118,53 +118,6 @@ export default function BoardWritePresenter(props: IBoardWritePresenterProps) {
         </BodyBlock>
         <BodyBlock>
           <BodyBlockTitle>사진 첨부</BodyBlockTitle>
-          {/* <BodyBlockUploadLine>
-            <input
-              style={{ display: "none" }}
-              ref={props.fileRef1}
-              type="file"
-              onChange={props.onChangeFile1}
-            ></input>
-            <input
-              style={{ display: "none" }}
-              ref={props.fileRef2}
-              type="file"
-              onChange={props.onChangeFile2}
-            ></input>
-            <input
-              style={{ display: "none" }}
-              ref={props.fileRef3}
-              type="file"
-              onChange={props.onChangeFile3}
-            ></input>
-            <BodyBlockUpload onClick={props.onClickfileRef1}>
-              {props.imageUrl1 === "" ? (
-                "+"
-              ) : (
-                <Image
-                  src={`https://storage.googleapis.com/${props.imageUrl1}`}
-                />
-              )}
-            </BodyBlockUpload>
-            <BodyBlockUpload onClick={props.onClickfileRef2}>
-              {props.imageUrl2 === "" ? (
-                "+"
-              ) : (
-                <Image
-                  src={`https://storage.googleapis.com/${props.imageUrl2}`}
-                />
-              )}
-            </BodyBlockUpload>
-            <BodyBlockUpload onClick={props.onClickfileRef3}>
-              {props.imageUrl3 === "" ? (
-                "+"
-              ) : (
-                <Image
-                  src={`https://storage.googleapis.com/${props.imageUrl3}`}
-                />
-              )}
-            </BodyBlockUpload>
-          </BodyBlockUploadLine> */}
           <BodyBlockUploadLine>
             {props.imageUrls.map((el, index) => (
               <Upload1Container
@@ -172,12 +125,11 @@ export default function BoardWritePresenter(props: IBoardWritePresenterProps) {
                 imageUrl={el}
                 index={index}
                 onChangeImageUrls={props.onChangeImageUrls}
-                // data={props.data?.fetchBoard?.images}
               />
             ))}
           </BodyBlockUploadLine>
         </BodyBlock>
-        <BodyBlock>
+        {/* <BodyBlock>
           <BodyBlockTitle>메인 설정</BodyBlockTitle>
           <RadioBtnLine>
             <RadioButton type="radio" name="group" id="youtube" />
@@ -185,7 +137,7 @@ export default function BoardWritePresenter(props: IBoardWritePresenterProps) {
             <RadioButton type="radio" name="group" id="image" />
             <RadioButtonLabel htmlFor="image">사진</RadioButtonLabel>
           </RadioBtnLine>
-        </BodyBlock>
+        </BodyBlock> */}
         <EndBlock>
           <RegisterBtn
             onClick={props.isEdit ? props.onClickUpdate : props.register}

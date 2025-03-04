@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import ReactPlayer from "react-player/youtube";
 
 export const Wrapper = styled.div`
+  box-sizing: border-box;
   width: 1200px;
   display: flex;
   flex-direction: column;
@@ -10,12 +11,12 @@ export const Wrapper = styled.div`
 `;
 
 export const Board = styled.div`
+  box-sizing: border-box;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 1px solid gray;
-  padding-bottom: 80px;
 `;
 
 export const Info = styled.div`
@@ -87,7 +88,7 @@ export const Image = styled.img`
 export const Contents = styled.div`
   margin: 20px 0px;
   width: 996px;
-  height: 640px;
+  /* height: 640px; */
 `;
 
 export const Youtube = styled(ReactPlayer)`
@@ -103,7 +104,7 @@ export const LikeOrDislike = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 160px;
-  /* border: 1px solid red; */
+  margin: 40px 0px;
 `;
 
 export const LikeBlock = styled.div`

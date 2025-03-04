@@ -2,7 +2,7 @@ import BoardCommentWritePresenter from "./CommentWrite.presenter";
 import { CREATE_COMMENT, UPDATE_COMMENT } from "./CommentWrite.queries";
 import { FETCH_COMMENTS } from "../list/CommentList.queries";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ChangeEvent } from "react";
 import { IBoardCommentWriteContainer } from "./CommentWrite.types";
@@ -105,6 +105,10 @@ export default function BoardCommentWriteContainer(
     }
   };
 
+  const onClickBack = (event: MouseEvent<HTMLImageElement>) => {
+    props.setIsEdit?.(false);
+  };
+
   return (
     <BoardCommentWritePresenter
       changeCommentWriter={changeCommentWriter}
@@ -112,6 +116,7 @@ export default function BoardCommentWriteContainer(
       changeCommentContents={changeCommentContents}
       onClickCommandWriteInputBtn={onClickCommandWriteInputBtn}
       onClickCommentUpdate={onClickCommentUpdate}
+      onClickBack={onClickBack}
       commentWriter={commentWriter}
       commentPassword={commentPassword}
       commentContents={commentContents}

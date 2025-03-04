@@ -6,7 +6,6 @@ interface ILayoutNavigationPresenter {
 }
 
 const navigation = [
-  { id: "/openapi", text: "연습용 OPEN-API" },
   { id: "/boards", text: "자유게시판" },
   { id: "/market", text: "중고마켓" },
   { id: "/mypage/mymarket", text: "마이페이지" },

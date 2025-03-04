@@ -1,4 +1,4 @@
-import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import { ChangeEvent, Dispatch, MouseEvent, SetStateAction } from "react";
 
 export interface IBoardCommentWriteContainer {
   isEdit?: boolean;
@@ -12,6 +12,7 @@ export interface IBoardCommentWritePresenter {
   changeCommentContents: (event: ChangeEvent<HTMLTextAreaElement>) => void;
   onClickCommandWriteInputBtn: () => void;
   onClickCommentUpdate: () => void;
+  onClickBack: (event: MouseEvent<HTMLImageElement>) => void;
   commentWriter: string;
   commentPassword: string;
   commentContents: string;

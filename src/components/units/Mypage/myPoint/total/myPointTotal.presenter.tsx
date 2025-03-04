@@ -43,10 +43,12 @@ export default function MyPointTotalPresenter(props: IMyPointTotalPresenter) {
           {props.data?.fetchPointTransactions.map((el) => (
             <S.RowBodyLine key={el._id}>
               <S.ColumnNotTitle>
-                {getDate(el.useditem?.soldAt)}
+                {getDate(el.useditem?.soldAt || el.createdAt)}
               </S.ColumnNotTitle>
               <S.ColumnTitle>{el.status}</S.ColumnTitle>
-              <S.ColumnNotTitle>{el.amount}</S.ColumnNotTitle>
+              <S.ColumnNotTitle>
+                {String(el.amount).includes("-") ? el.amount : "+" + el.amount}
+              </S.ColumnNotTitle>
               <S.ColumnNotTitle>₩{formatPrice(el.balance)}</S.ColumnNotTitle>
             </S.RowBodyLine>
           ))}

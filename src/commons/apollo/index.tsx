@@ -7,7 +7,7 @@ import {
 import createUploadLink from "apollo-upload-client/createUploadLink.mjs";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../globalState";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { IsLogInState } from "../globalState";
 
 interface IApolloSetting {

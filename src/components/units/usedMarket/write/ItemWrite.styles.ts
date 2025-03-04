@@ -59,8 +59,6 @@ export const Wrap2WebEditor = styled.div`
   height: 360px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  margin-bottom: 40px;
 `;
 
 export const Wrap2WebEditor1 = styled.div`
@@ -71,6 +69,9 @@ export const Wrap2WebEditor1 = styled.div`
 export const Wrap2WebEditor2 = styled(ReactQuill)`
   width: 996px;
   height: 320px;
+  .ql-container {
+    height: calc(320px - 42px); /* 42px는 툴바(toolbar) 높이 */
+  }
 `;
 
 export const Wrap2Location = styled.div`

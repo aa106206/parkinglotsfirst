@@ -19,6 +19,7 @@ const FETCH_POINT_TRANSACTIONS = gql`
         name
         price
       }
+      createdAt
     }
   }
 `;
@@ -29,6 +30,7 @@ export default function MyPointTotalContainer() {
   const { data } = useQuery<Pick<IQuery, "fetchPointTransactions">>(
     FETCH_POINT_TRANSACTIONS,
   );
+  console.log(data);
 
   const onClickMoveToPage = (event: MouseEvent<HTMLDivElement>) => {
     router.push(`/mypage/mypoint/${event.currentTarget.id}`);

@@ -43,6 +43,7 @@ export default function LoginContainer() {
     setAccessToken(Token);
     setIsLogIn(true);
     localStorage.setItem("accessToken", Token);
+    localStorage.setItem("recentlyViewed", "[]");
     // router.push("/boards");
   };
 

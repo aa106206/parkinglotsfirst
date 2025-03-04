@@ -30,6 +30,7 @@ export const CommandWriteInfoHeadLine = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   font-size: 18px;
   font-weight: 500;
 `;

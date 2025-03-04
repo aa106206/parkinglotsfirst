@@ -1288,6 +1288,11 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@portone/browser-sdk@^0.0.12":
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/@portone/browser-sdk/-/browser-sdk-0.0.12.tgz#b3d7eff037ec465bb7f82aff0da1252a95d7c761"
+  integrity sha512-R2klacodrZ4V/7T/UNEYyKSO5cUlgcqadHzv7MmRmRsYgXCsLGoQQYkl7M7TQSF5+n4nFmSm7c04rX/lZoU7Dg==
+
 "@rc-component/async-validator@^5.0.3":
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/@rc-component/async-validator/-/async-validator-5.0.4.tgz#5291ad92f00a14b6766fc81735c234277f83e948"

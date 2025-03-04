@@ -1,5 +1,5 @@
 import { IQuery } from "../../../../commons/types/generated/types";
-import { ChangeEvent } from "react";
+import { ChangeEvent, MouseEvent } from "react";
 // import { RefObject } from "react";
 
 export interface IBoardWriteContainerProps {
@@ -22,7 +22,7 @@ export interface IBoardWritePresenterProps {
   onClickUpdate: () => void;
   data?: Pick<IQuery, "fetchBoard">;
   isModalOpen: boolean;
-  onToggleModal: () => void;
+  onToggleModal: (event: MouseEvent<HTMLButtonElement>) => void;
   onCompleteAddressSearch: (data: any) => void;
   zipcode: string;
   address: string;

@@ -8,40 +8,13 @@ import {
   IQueryFetchUseditemsIPickedArgs,
   IQueryFetchUseditemsISoldArgs,
 } from "../../../../commons/types/generated/types";
+import {
+  FETCH_USED_ITEMS_COUNT_I_PICKED,
+  FETCH_USED_ITEMS_I_PICKED,
+  FETCH_USEDITEMS_COUNT_I_SOLD,
+  FETCH_USEDITEMS_I_SOLD,
+} from "./myMarket.types";
 
-export const FETCH_USEDITEMS_I_SOLD = gql`
-  query fetchUseditemsISold($search: String, $page: Int) {
-    fetchUseditemsISold(search: $search, page: $page) {
-      _id
-      name
-      price
-      createdAt
-    }
-  }
-`;
-
-export const FETCH_USED_ITEMS_I_PICKED = gql`
-  query fetchUseditemsIPicked($search: String, $page: Int) {
-    fetchUseditemsIPicked(search: $search, page: $page) {
-      _id
-      name
-      price
-      createdAt
-    }
-  }
-`;
-
-export const FETCH_USEDITEMS_COUNT_I_SOLD = gql`
-  query {
-    fetchUseditemsCountISold
-  }
-`;
-
-export const FETCH_USED_ITEMS_COUNT_I_PICKED = gql`
-  query {
-    fetchUseditemsCountIPicked
-  }
-`;
 export default function MyMarketContainer() {
   const router = useRouter();
   const [keyword, setKeyword] = useState("");
@@ -75,7 +48,9 @@ export default function MyMarketContainer() {
     setSelected("IPick");
   };
 
-  const onClickTitle = (event: MouseEvent<HTMLDivElement>) => {};
+  const onClickTitle = (event: MouseEvent<HTMLDivElement>) => {
+    router.push(`/market/${event.currentTarget.id}`);
+  };
 
   const getKeyword = _.debounce((value) => {
     if (selected === "ISold") {

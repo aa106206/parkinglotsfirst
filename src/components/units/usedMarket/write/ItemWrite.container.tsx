@@ -3,49 +3,17 @@ import ItemWritePresenter from "./ItemWrite.presenter";
 import { useRouter } from "next/router";
 import { getAddressByCoords } from "../../../../commons/kakaomap/latlngaddress";
 import { useForm } from "react-hook-form";
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "../../../../commons/yup/schema";
-
-const CREATE_USED_ITEM = gql`
-  mutation createUseditem($createUseditemInput: CreateUseditemInput!) {
-    createUseditem(createUseditemInput: $createUseditemInput) {
-      _id
-      name
-      remarks
-      contents
-      price
-      tags
-      useditemAddress {
-        address
-        addressDetail
-        lat
-        lng
-      }
-      images
-      seller {
-        name
-      }
-      createdAt
-    }
-  }
-`;
-
-export interface IFormData {
-  name: string;
-  remarks: string;
-  contents: string;
-  price: string;
-  tags: string;
-  address: string;
-  addressDetail: string;
-}
+import { CREATE_USED_ITEM } from "./ItemWrite.queries";
+import { IFormData } from "./ItemWrite.types";
 
 declare const window: typeof globalThis & { kakao: any };
 
 export default function ItemWriteContainer() {
-  const [lat, setLat] = useState(35.931908);
-  const [lng, setLng] = useState(128.555061);
+  const [lat, setLat] = useState(37.494515);
+  const [lng, setLng] = useState(126.959695);
   const [address, setAddress] = useState("");
 
   const router = useRouter();
@@ -75,13 +43,13 @@ export default function ItemWriteContainer() {
       window.kakao.maps.load(function () {
         const container = document.getElementById("map");
         const options = {
-          center: new window.kakao.maps.LatLng(35.931908, 128.555061), //지도의 중심좌표.
+          center: new window.kakao.maps.LatLng(37.494515, 126.959695), //지도의 중심좌표.
           level: 3, //지도의 레벨(확대, 축소 정도)
         };
         const map = new window.kakao.maps.Map(container, options); //지도 생성 및 객체 리턴}
         const markerPosition = new window.kakao.maps.LatLng(
-          35.931908,
-          128.555061,
+          37.494515,
+          126.959695,
         );
 
         // 마커를 생성합니다
@@ -145,6 +113,7 @@ export default function ItemWriteContainer() {
       address={address}
       register={register}
       handleSubmit={handleSubmit}
+      setValue={setValue}
       onChangeContents={onChangeContents}
       formState={formState}
     />

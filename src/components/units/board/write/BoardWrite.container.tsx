@@ -1,6 +1,6 @@
 import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries";
 import BoardWritePresenter from "./BoardWrite.presenter";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, MouseEvent, useEffect, useState } from "react";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import {
@@ -11,7 +11,6 @@ import {
 } from "../../../../commons/types/generated/types";
 import { IBoardWriteContainerProps } from "./BoardWrite.types";
 import { Address } from "react-daum-postcode";
-// import { validationFile } from "../../../../commons/libraries/validationFile";
 
 export default function BoardWriteContainer(props: IBoardWriteContainerProps) {
   const [writer, setWriter] = useState("");
@@ -31,10 +30,6 @@ export default function BoardWriteContainer(props: IBoardWriteContainerProps) {
 
   const [isActive, setIsActive] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // const fileRef1 = useRef<HTMLInputElement>(null);
-  // const fileRef2 = useRef<HTMLInputElement>(null);
-  // const fileRef3 = useRef<HTMLInputElement>(null);
 
   const router = useRouter();
 
@@ -181,14 +176,14 @@ export default function BoardWriteContainer(props: IBoardWriteContainerProps) {
     }
   };
 
-  const onToggleModal = () => {
+  const onToggleModal = (event: MouseEvent<HTMLButtonElement>) => {
     setIsModalOpen(!isModalOpen);
   };
 
   const onCompleteAddressSearch = (data: Address) => {
     setZipcode(data.zonecode);
     setAddress(data.address);
-    onToggleModal();
+    setIsModalOpen(!isModalOpen);
   };
 
   const onChangeDetailAddress = (event: ChangeEvent<HTMLInputElement>) => {
