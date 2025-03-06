@@ -34,19 +34,20 @@ export default function SignUpContainer() {
   };
 
   const onClickSignUp = async () => {
-    console.log(name);
-    console.log(password);
-    const result = await signup({
-      variables: {
-        createUserInput: {
-          name,
-          password,
-          email,
+    try {
+      const result = await signup({
+        variables: {
+          createUserInput: {
+            name,
+            password,
+            email,
+          },
         },
-      },
-    });
-    console.log(result);
-    router.push("/account/login");
+      });
+      router.push("/account/login");
+    } catch (error) {
+      if (error instanceof Error) alert("이미 존재하는 아이디입니다");
+    }
   };
 
   return (

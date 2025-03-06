@@ -122,9 +122,7 @@ export default function BoardWriteContainer(props: IBoardWriteContainerProps) {
       updateBoardInput.images = imageUrls;
     }
 
-    if (!router || typeof router.query.number !== "string") return <></>; //이 설명은 TS 포트폴리오 리뷰에 있음
-    console.log("출력되나요1111??");
-    console.log(updateBoardInput);
+    if (!router || typeof router.query.number !== "string") return <></>;
 
     const result = await updateBoard({
       variables: {
@@ -133,8 +131,6 @@ export default function BoardWriteContainer(props: IBoardWriteContainerProps) {
         updateBoardInput,
       },
     });
-    console.log("출력되나요??");
-    console.log(updateBoardInput);
     router.push(`/boards/${result.data?.updateBoard._id}`);
   };
 
@@ -166,13 +162,11 @@ export default function BoardWriteContainer(props: IBoardWriteContainerProps) {
           },
         },
       });
-      console.log("게시판 작성 후 result: ");
-      console.log(result);
 
       router.push(`/boards/${result.data?.createBoard._id}`);
     } catch (error) {
       if (error instanceof Error)
-        alert("게시글 등록하는 과정에서 에러가 발생했습니다."); //TS 포트폴리오 리뷰에서 알려줌
+        alert("게시글 등록하는 과정에서 에러가 발생했습니다.");
     }
   };
 
@@ -195,10 +189,7 @@ export default function BoardWriteContainer(props: IBoardWriteContainerProps) {
   };
 
   useEffect(() => {
-    // console.log("혹시 무한루프");
     const images = props.data?.fetchBoard.images;
-    // console.log(images);
-    // console.log("왜 출력안되냐");
     if (images !== undefined && images !== null) setImageUrls([...images]);
   }, [props.data]);
 
@@ -207,53 +198,6 @@ export default function BoardWriteContainer(props: IBoardWriteContainerProps) {
     newImageUrls[index] = imageUrl;
     setImageUrls(newImageUrls);
   };
-  // const onChangeFile1 = async (event: ChangeEvent<HTMLInputElement>) => {
-  //   const image1 = event.target.files?.[0];
-
-  //   if (!validationFile(image1)) return;
-
-  //   const result = await uploadFile1({
-  //     variables: { file: image1 },
-  //   });
-
-  //   setImageUrl1(result.data?.uploadFile.url ?? "");
-  // };
-
-  // const onChangeFile2 = async (event: ChangeEvent<HTMLInputElement>) => {
-  //   const image2 = event.target.files?.[0];
-
-  //   if (!validationFile(image2)) return;
-
-  //   const result = await uploadFile2({
-  //     variables: { file: image2 },
-  //   });
-
-  //   setImageUrl2(result.data?.uploadFile.url ?? "");
-  // };
-
-  // const onChangeFile3 = async (event: ChangeEvent<HTMLInputElement>) => {
-  //   const image3 = event.target.files?.[0];
-
-  //   if (!validationFile(image3)) return;
-
-  //   const result = await uploadFile3({
-  //     variables: { file: image3 },
-  //   });
-
-  //   setImageUrl3(result.data?.uploadFile.url ?? "");
-  // };
-
-  // const onClickfileRef1 = () => {
-  //   fileRef1.current?.click();
-  // };
-
-  // const onClickfileRef2 = () => {
-  //   fileRef2.current?.click();
-  // };
-
-  // const onClickfileRef3 = () => {
-  //   fileRef3.current?.click();
-  // };
 
   return (
     <BoardWritePresenter
@@ -277,15 +221,6 @@ export default function BoardWriteContainer(props: IBoardWriteContainerProps) {
       address={address}
       onChangeDetailAddress={onChangeDetailAddress}
       onChangeYoutubeUrl={onChangeYoutubeUrl}
-      // fileRef1={fileRef1}
-      // fileRef2={fileRef2}
-      // fileRef3={fileRef3}
-      // onChangeFile1={onChangeFile1}
-      // onChangeFile2={onChangeFile2}
-      // onChangeFile3={onChangeFile3}
-      // onClickfileRef1={onClickfileRef1}
-      // onClickfileRef2={onClickfileRef2}
-      // onClickfileRef3={onClickfileRef3}
       imageUrls={imageUrls}
       onChangeImageUrls={onChangeImageUrls}
     />

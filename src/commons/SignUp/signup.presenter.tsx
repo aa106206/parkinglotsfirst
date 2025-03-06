@@ -20,7 +20,7 @@ export default function SignUpPresenter(props: ISignUpPresenter) {
           <S.IdInput onChange={props.onChangeID} type="text" />
         </S.Id>
         <S.Id>
-          <S.IdImage>이메일</S.IdImage>
+          <S.IdImage>아이디</S.IdImage>
           <S.IdInput onChange={props.onChangeEmail} type="text" />
         </S.Id>
         <S.Id>

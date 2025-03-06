@@ -78,7 +78,6 @@ export default function BoardDetailContainer() {
 
   const onClickDelete = async (event: MouseEvent<HTMLButtonElement>) => {
     if (event.target instanceof HTMLButtonElement) {
-      console.log("삭제할 게시글 ID: " + event.target.id);
       await deleteBoard({
         variables: {
           boardId: event.target.id,

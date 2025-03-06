@@ -19,10 +19,7 @@ export default function BoardCommentListContainer() {
   });
 
   const onClickDeleteComment = async (event: MouseEvent<HTMLButtonElement>) => {
-    console.log(password);
-    console.log(deleteCommentId);
     try {
-      // if (event.target instanceof HTMLButtonElement) {
       await deleteComment({
         variables: {
           password: password,
@@ -37,11 +34,10 @@ export default function BoardCommentListContainer() {
           },
         ],
       });
-      // }
+
       setIsModalOpen(false);
     } catch (error) {
       if (error instanceof Error) alert(error.message);
-      // if (error instanceof Error) alert("비밀번호가 틀렸습니다");
     }
   };
 
@@ -60,7 +56,6 @@ export default function BoardCommentListContainer() {
 
   const onLoadMore = () => {
     if (data === undefined) return;
-    console.log(data);
 
     fetchMore({
       variables: { page: Math.ceil(data?.fetchBoardComments.length / 10) + 1 },

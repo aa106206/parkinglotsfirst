@@ -7,7 +7,6 @@ import SearchBar2 from "../../../../commons/searchbar/searchBar2/searchbar2";
 import { DatePicker, Space } from "antd";
 import BestItem2Container from "../../../../commons/Best/bestItem2/BestItem2.container";
 import { IUsedMarketPresenter } from "./useMarketList.types";
-import LoadingContainer from "../../../../commons/loading/loading.container";
 import HashtagConverter from "../../../../commons/HashTagConvert/HashtagConverter";
 
 export default function UsedMarketPresenter(props: IUsedMarketPresenter) {
@@ -17,8 +16,8 @@ export default function UsedMarketPresenter(props: IUsedMarketPresenter) {
       <S.BestUsedItem>
         <S.BestUsedItemTitle>베스트 상품</S.BestUsedItemTitle>
         <S.BestUsedItemMain>
-          {props.BestItem?.fetchUseditemsOfTheBest.map((el) => (
-            <BestItem1Container el={el} />
+          {props.BestItem?.fetchUseditemsOfTheBest.map((el, index) => (
+            <BestItem1Container el={el} key={index} />
           ))}
         </S.BestUsedItemMain>
         <S.TodayWatchListWrapper style={{ height: "700px", overflow: "auto" }}>
@@ -30,8 +29,8 @@ export default function UsedMarketPresenter(props: IUsedMarketPresenter) {
               hasMore={true}
               useWindow={false}
             >
-              {props.recentlyViewed?.map((el) => (
-                <BestItem2Container el={el} />
+              {props.recentlyViewed?.map((el, index) => (
+                <BestItem2Container el={el} key={index} />
               ))}
             </InfiniteScroll>
           </div>
@@ -74,8 +73,12 @@ export default function UsedMarketPresenter(props: IUsedMarketPresenter) {
             hasMore={true}
             useWindow={false}
           >
-            {props.data?.fetchUseditems.map((el) => (
-              <S.UsedItem id={el._id} onClick={props.onClickMoveToDetailPage}>
+            {props.data?.fetchUseditems.map((el, index) => (
+              <S.UsedItem
+                id={el._id}
+                onClick={props.onClickMoveToDetailPage}
+                key={index}
+              >
                 <S.UsedItemPart1
                   src={
                     el.images?.length === 0 || el.images?.[0] === ""

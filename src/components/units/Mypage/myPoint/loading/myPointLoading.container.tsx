@@ -27,7 +27,6 @@ export default function MyPointLoadingContainer() {
   const { data } = useQuery<Pick<IQuery, "fetchPointTransactionsOfLoading">>(
     FETCH_POINT_TRANSACTIONS_OF_LOADING,
   );
-  console.log(data);
 
   const onClickMoveToPage = (event: MouseEvent<HTMLDivElement>) => {
     router.push(`/mypage/mypoint/${event.currentTarget.id}`);

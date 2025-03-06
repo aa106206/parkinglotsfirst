@@ -27,14 +27,9 @@ const FETCH_POINT_TRANSACTIONS_OF_BUYING = gql`
 
 export default function MyPointBuyingContainer() {
   const router = useRouter();
-  alert("??");
-  console.log("#####");
   const { data } = useQuery<Pick<IQuery, "fetchPointTransactionsOfBuying">>(
     FETCH_POINT_TRANSACTIONS_OF_BUYING,
   );
-  console.log("#####");
-  console.log(data);
-
   const onClickMoveToPage = (event: MouseEvent<HTMLDivElement>) => {
     router.push(`/mypage/mypoint/${event.currentTarget.id}`);
   };

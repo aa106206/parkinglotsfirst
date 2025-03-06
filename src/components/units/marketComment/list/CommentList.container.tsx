@@ -2,12 +2,11 @@ import BoardCommentListPresenter from "./CommentList.presenter";
 import { useQuery, useMutation } from "@apollo/client";
 import {
   FETCH_USED_ITEM_QUESTIONS,
-  FETCH_USED_ITEM_QUESTION_ANSWERS,
   DELETE_USED_ITEM_QUESTION,
   FETCH_USER_LOGGED_IN,
 } from "./CommentList.queries";
 import { useRouter } from "next/router";
-import { MouseEvent, ChangeEvent, useState } from "react";
+import { MouseEvent } from "react";
 import {
   IQuery,
   IQueryFetchUseditemQuestionsArgs,
@@ -33,7 +32,6 @@ export default function BoardCommentListContainer() {
     (deleteCommentId: string) =>
     async (event: MouseEvent<HTMLImageElement>) => {
       try {
-        console.log("삭제할 댓글의 아이디는 : ", deleteCommentId);
         await deleteComment({
           variables: {
             useditemQuestionId: deleteCommentId,

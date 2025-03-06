@@ -39,7 +39,6 @@ export default function BestItem2Container(props: IBestItem2Container) {
   });
 
   const onClickBest = (event: MouseEvent<HTMLInputElement>) => {
-    console.log(data?.fetchUseditem);
     router.push(`/market/${data?.fetchUseditem._id}`);
   };
 

@@ -4,7 +4,6 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { gql, useMutation } from "@apollo/client";
 import { accessTokenState, IsLogInState } from "../globalState";
 import { useRecoilState } from "recoil";
-import { access } from "fs";
 
 const LOGIN_USER = gql`
   mutation loginUser($email: String!, $password: String!) {
@@ -32,19 +31,22 @@ export default function LoginContainer() {
   };
 
   const onClickLogin = async () => {
-    const result = await login({
-      variables: {
-        email,
-        password,
-      },
-    });
-    const Token = result.data.loginUser.accessToken;
+    try {
+      const result = await login({
+        variables: {
+          email,
+          password,
+        },
+      });
+      const Token = result.data.loginUser.accessToken;
 
-    setAccessToken(Token);
-    setIsLogIn(true);
-    localStorage.setItem("accessToken", Token);
-    localStorage.setItem("recentlyViewed", "[]");
-    // router.push("/boards");
+      setAccessToken(Token);
+      setIsLogIn(true);
+      localStorage.setItem("accessToken", Token);
+      localStorage.setItem("recentlyViewed", "[]");
+    } catch (error) {
+      if (error instanceof Error) alert("로그인 실패");
+    }
   };
 
   // isLogIn이 true로 변경된 후 라우팅 실행

@@ -16,7 +16,7 @@ export default function LoginPresenter(props: ILoginPresenter) {
           <S.LoginWord>로그인</S.LoginWord>
         </S.WordWrapper>
         <S.Id>
-          <S.IdImage>이메일</S.IdImage>
+          <S.IdImage>아이디</S.IdImage>
           <S.IdInput onChange={props.onChangeEmail} type="text" />
         </S.Id>
         <S.Id>

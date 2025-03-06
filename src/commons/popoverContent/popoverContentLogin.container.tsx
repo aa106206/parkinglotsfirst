@@ -13,8 +13,6 @@ export default function PopoverContentLoginContainer() {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
   const [isLogIn, setIsLogIn] = useRecoilState(IsLogInState);
   const [isModalOpen, setIsModalOpen] = useRecoilState(loadPage);
-  console.log("cnffurasdfs");
-  console.log(isModalOpen);
 
   const { data } =
     useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);

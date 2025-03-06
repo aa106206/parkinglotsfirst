@@ -30,9 +30,10 @@ export default function UsedMarketContainer() {
     FETCH_USED_ITEM_OF_THE_BEST,
   );
 
-  const recentlyViewed = JSON.parse(
-    localStorage.getItem("recentlyViewed") ?? "",
-  );
+  const recentlyViewed =
+    typeof window !== "undefined"
+      ? JSON.parse(localStorage.getItem("recentlyViewed") ?? "[]")
+      : [];
 
   const onClickSoldoutFalse = (event: MouseEvent<HTMLDivElement>) => {
     refetch({
@@ -92,7 +93,7 @@ export default function UsedMarketContainer() {
     getKeyword(event.currentTarget.value);
   };
 
-  // 날짜로 상품 게시글 찾는 코드였던걸로 기억함
+  // 날짜로 상품 게시글 찾는 코드
   const handleRangeChange = (dates: any, dateStrings: any) => {
     console.log("Selected Dates: ", dates); // Moment 객체 배열
     console.log("Formatted Dates: ", dateStrings); // 문자열 배열

@@ -60,13 +60,11 @@ export default function LoadingContainer() {
         // callback
         if (rsp.success) {
           alert("결제가 성공했습니다.");
-          console.log(rsp);
           const result = await loading({
             variables: {
               impUid: rsp.imp_uid,
             },
           });
-          console.log(result);
         } else {
           alert("결제에 실패했습니다.");
           // 결제 실패 로직

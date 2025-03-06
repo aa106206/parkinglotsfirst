@@ -9,7 +9,6 @@ export default function LayoutNavigationContainer() {
   const isLogIn = useRecoilValue(IsLogInState);
 
   const onClickOption = (event: MouseEvent<HTMLImageElement>) => {
-    console.log(isLogIn);
     if (isLogIn === false) {
       router.push("/account/login");
     }
