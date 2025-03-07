@@ -85,12 +85,17 @@ export default function ItemDetailContainer() {
   };
 
   const onClickBuy = async (event: MouseEvent<HTMLButtonElement>) => {
-    const result = await buyData({
-      variables: {
-        useritemId: typeof router.query.id === "string" ? router.query.id : "",
-      },
-    });
-    router.push("/market");
+    try {
+      const result = await buyData({
+        variables: {
+          useritemId:
+            typeof router.query.id === "string" ? router.query.id : "",
+        },
+      });
+      router.push("/market");
+    } catch (error) {
+      if (error instanceof Error) alert("잔액 부족입니다. 포인트를 충전하세요");
+    }
   };
 
   return (
