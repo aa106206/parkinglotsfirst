@@ -1,40 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# 🛒 중고마켓 프론트엔드 웹 서비스
 
-## Getting Started
+React 기반으로 구현된 **중고마켓 기능의 프론트엔드 웹 서비스**입니다.  
+기존에 제공된 서버(API)를 연동하여 상품 조회, 목록 표시 등 중고마켓의 핵심 UI 흐름을 구현하는 데 초점을 두었습니다.
 
-First, run the development server:
+> 현재는 AWS 서버 연결을 해제한 상태이며,  
+> 본 레포지토리는 **프론트엔드 구현 및 로컬 실행 환경**을 중심으로 관리됩니다.
+
+---
+
+## 🧩 주요 기능
+
+- 중고 상품 목록 조회
+- 상품 상세 페이지 UI 구성
+- API 연동을 통한 데이터 렌더링
+- 컴포넌트 단위 UI 구성 (React)
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+- **React**
+- Typescript
+- Yarn
+
+### Development Environment
+- Node.js
+- Local Development Server (`yarn dev`)
+
+---
+
+## 🚀 실행 방법 (Local)
+
+아래 절차를 통해 로컬 환경에서 프로젝트를 실행할 수 있습니다.
 
 ```bash
-npm run dev
-# or
+# 1. 레포지토리 클론
+git clone <repository-url>
+
+# 2. 프로젝트 디렉토리 이동
+cd <project-directory>
+
+# 3. 의존성 설치
+yarn install
+
+# 4. 개발 서버 실행
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📸 Screenshots
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+<p align="center">
+  <img src="image/capture1.png" width="30%" />
+  <img src="image/capture2.png" width="30%" />
+  <img src="image/capture3.png" width="30%" />
+</p>
